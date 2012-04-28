@@ -1,20 +1,24 @@
-﻿using TaskList.Views;
+﻿using System.Collections.ObjectModel;
 
 namespace TaskList.Models
 {
-    internal class MainViewModel : ViewModelBase<IMainView>
+    internal class MainViewModel : ModelBase
     {
-        private readonly TaskListViewModel task_list;
+        private readonly ObservableCollection<TaskModel> tasks = new ObservableCollection<TaskModel>();
 
-        public MainViewModel(IMainView view)
-            : base(view)
+        public MainViewModel()
+            : base()
         {
-            this.task_list = new TaskListViewModel(view);
+            this.Tasks.Add(new TaskModel("read a book"));
+            this.Tasks.Add(new TaskModel("write a letter"));
+            this.Tasks.Add(new TaskModel("draw a doodle"));
         }
 
-        public void Show()
+        public TaskModel SelectedItem { get; set; }
+
+        public ObservableCollection<TaskModel> Tasks
         {
-            this.View.Show();
+            get { return this.tasks; }
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 using TaskList.Models;
-using TaskList.Presentation;
+using TaskList.Views;
 
 namespace TaskList
 {
@@ -10,9 +10,10 @@ namespace TaskList
         {
             base.OnStartup(e);
 
-            var m = new MainViewModel(new MainWindow());
+            var window = new MainWindow();
 
-            m.Show();
+            window.DataContext = new MainViewModel();
+            window.Show();
         }
     }
 }

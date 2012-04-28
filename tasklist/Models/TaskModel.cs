@@ -2,7 +2,7 @@
 
 namespace TaskList.Models
 {
-    internal class TaskModel
+    internal class TaskModel : ModelBase
     {
         private static int count = 0;
 
@@ -14,7 +14,7 @@ namespace TaskList.Models
 
         public bool Complete { get; set; }
         public int Id { get; private set; }
-        public string Title { get; private set; }
+        public string Title { get; set; }
 
         public TaskModel(string title)
         {

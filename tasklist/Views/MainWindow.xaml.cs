@@ -1,9 +1,8 @@
 ﻿using System.Windows;
-using TaskList.Views;
 
-namespace TaskList.Presentation
+namespace TaskList.Views
 {
-    public partial class MainWindow : Window, IMainView
+    public partial class MainWindow : Window
     {
         public MainWindow()
         {
