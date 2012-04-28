@@ -11,19 +11,8 @@ namespace TaskList.Models
     {
         private void OnTaskPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            var t = sender as TaskModel;
-
-            if (t != null && e.PropertyName == "Complete")
-            {
-                if (t.Complete)
-                {
-                    this.CompleteTasks.View.Refresh();
-                }
-                else
-                {
-                    this.IncompleteTasks.View.Refresh();
-                }
-            }
+            this.CompleteTasks.View.Refresh();
+            this.IncompleteTasks.View.Refresh();
         }
 
         private void OnTasksChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -78,9 +67,6 @@ namespace TaskList.Models
             this.Tasks.Add(new TaskModel("draw a doodle"));
 
             this.Tasks[1].Complete = true;
-
-            this.CompleteTasks.View.Refresh();
-            this.IncompleteTasks.View.Refresh();
         }
 
         public ICommand CreateTask { get; private set; }

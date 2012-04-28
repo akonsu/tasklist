@@ -11,10 +11,11 @@
         <ColumnDefinition Width="Auto" />
       </Grid.ColumnDefinitions>
       <TextBox Name="TitleBox"
-               Text="{Binding NewTitle}"
+               Text="{Binding NewTitle, UpdateSourceTrigger=PropertyChanged}"
                Grid.Column="0" />
       <Button Command="{Binding CreateTask}"
-              Grid.Column="1">Create</Button>
+              Grid.Column="1"
+              IsDefault="True">Create</Button>
     </Grid>
     <Grid>
       <Grid.ColumnDefinitions>
@@ -24,10 +25,16 @@
       <DataGrid AutoGenerateColumns="False"
                 Grid.Column="0"
                 ItemsSource="{Binding IncompleteTasks.View}"
+                Name="IncompleteTasks"
                 SelectionMode="Single">
         <DataGrid.Columns>
-          <DataGridCheckBoxColumn Header="Complete"
-                                  Binding="{Binding Complete}" />
+          <DataGridTemplateColumn Header="Complete">
+            <DataGridTemplateColumn.CellTemplate>
+              <DataTemplate>
+                <CheckBox IsChecked="{Binding Path=Complete, UpdateSourceTrigger=PropertyChanged}" />
+              </DataTemplate>
+            </DataGridTemplateColumn.CellTemplate>
+          </DataGridTemplateColumn>
           <DataGridTextColumn Header="Title"
                               Binding="{Binding Title}" />
         </DataGrid.Columns>
@@ -37,8 +44,13 @@
                 ItemsSource="{Binding CompleteTasks.View}"
                 SelectionMode="Single">
         <DataGrid.Columns>
-          <DataGridCheckBoxColumn Header="Complete"
-                                  Binding="{Binding Complete}" />
+          <DataGridTemplateColumn Header="Complete">
+            <DataGridTemplateColumn.CellTemplate>
+              <DataTemplate>
+                <CheckBox IsChecked="{Binding Path=Complete, UpdateSourceTrigger=PropertyChanged}" />
+              </DataTemplate>
+            </DataGridTemplateColumn.CellTemplate>
+          </DataGridTemplateColumn>
           <DataGridTextColumn Header="Title"
                               Binding="{Binding Title}" />
         </DataGrid.Columns>
