@@ -9,12 +9,52 @@ namespace TaskList.Models
 {
     internal class MainViewModel : ModelBase
     {
+        private void OnTaskPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            var t = sender as TaskModel;
+
+            if (t != null && e.PropertyName == "Complete")
+            {
+                if (t.Complete)
+                {
+                    this.CompleteTasks.View.Refresh();
+                }
+                else
+                {
+                    this.IncompleteTasks.View.Refresh();
+                }
+            }
+        }
+
+        private void OnTasksChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e != null)
+            {
+                if (e.OldItems != null)
+                {
+                    foreach (INotifyPropertyChanged x in e.OldItems)
+                    {
+                        x.PropertyChanged -= this.OnTaskPropertyChanged;
+                    }
+                }
+                if (e.NewItems != null)
+                {
+                    foreach (INotifyPropertyChanged x in e.NewItems)
+                    {
+                        x.PropertyChanged += this.OnTaskPropertyChanged;
+                    }
+                }
+            }
+        }
+
         public MainViewModel()
             : base()
         {
             this.CompleteTasks = new CollectionViewSource();
             this.IncompleteTasks = new CollectionViewSource();
             this.Tasks = new ObservableCollection<TaskModel>();
+
+            this.Tasks.CollectionChanged += this.OnTasksChanged;
 
             this.CompleteTasks.Source = this.Tasks;
             this.IncompleteTasks.Source = this.Tasks;

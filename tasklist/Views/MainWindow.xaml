@@ -1,5 +1,4 @@
 ﻿<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:common="clr-namespace:TaskList.Common"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         x:Class="TaskList.Views.MainWindow"
         Icon="/Views/Resources/Main.ico"
@@ -17,15 +16,33 @@
       <Button Command="{Binding CreateTask}"
               Grid.Column="1">Create</Button>
     </Grid>
-    <DataGrid ItemsSource="{Binding IncompleteTasks.View}"
-              AutoGenerateColumns="False"
-              SelectionMode="Single">
-      <DataGrid.Columns>
-        <DataGridCheckBoxColumn Header="Complete"
-                                Binding="{Binding Complete}" />
-        <DataGridTextColumn Header="Title"
-                            Binding="{Binding Title}" />
-      </DataGrid.Columns>
-    </DataGrid>
+    <Grid>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="5*" />
+        <ColumnDefinition Width="5*" />
+      </Grid.ColumnDefinitions>
+      <DataGrid AutoGenerateColumns="False"
+                Grid.Column="0"
+                ItemsSource="{Binding IncompleteTasks.View}"
+                SelectionMode="Single">
+        <DataGrid.Columns>
+          <DataGridCheckBoxColumn Header="Complete"
+                                  Binding="{Binding Complete}" />
+          <DataGridTextColumn Header="Title"
+                              Binding="{Binding Title}" />
+        </DataGrid.Columns>
+      </DataGrid>
+      <DataGrid AutoGenerateColumns="False"
+                Grid.Column="1"
+                ItemsSource="{Binding CompleteTasks.View}"
+                SelectionMode="Single">
+        <DataGrid.Columns>
+          <DataGridCheckBoxColumn Header="Complete"
+                                  Binding="{Binding Complete}" />
+          <DataGridTextColumn Header="Title"
+                              Binding="{Binding Title}" />
+        </DataGrid.Columns>
+      </DataGrid>
+    </Grid>
   </DockPanel>
 </Window>
