@@ -4,8 +4,20 @@
         x:Class="TaskList.Views.MainWindow"
         Icon="/Views/Resources/Main.ico"
         Title="Task List">
-  <Grid>
-    <DataGrid ItemsSource="{Binding Tasks}"
+  <DockPanel>
+    <Grid DockPanel.Dock="Top"
+          FocusManager.FocusedElement="{Binding ElementName=TitleBox}">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="Auto" />
+      </Grid.ColumnDefinitions>
+      <TextBox Name="TitleBox"
+               Text="{Binding NewTitle}"
+               Grid.Column="0" />
+      <Button Command="{Binding CreateTask}"
+              Grid.Column="1">Create</Button>
+    </Grid>
+    <DataGrid ItemsSource="{Binding IncompleteTasks.View}"
               AutoGenerateColumns="False"
               SelectionMode="Single">
       <DataGrid.Columns>
@@ -15,5 +27,5 @@
                             Binding="{Binding Title}" />
       </DataGrid.Columns>
     </DataGrid>
-  </Grid>
+  </DockPanel>
 </Window>
