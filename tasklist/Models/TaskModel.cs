@@ -1,35 +1,45 @@
-﻿using System.Threading;
+﻿using System.Runtime.Serialization;
 
 namespace TaskList.Models
 {
+    [DataContract]
     internal class TaskModel : ModelBase
     {
-        private static int count = 0;
-        private bool is_complete;
+        private bool complete;
+        private int? id;
+        private string title;
 
-        // thread safe id generator
-        private static int GetNewId()
-        {
-            return Interlocked.Increment(ref TaskModel.count);
-        }
-
+        [DataMember]
         public bool Complete
         {
-            get { return this.is_complete; }
+            get { return this.complete; }
             set
             {
-                this.is_complete = value;
+                this.complete = value;
                 base.RaisePropertyChangedEvent("Complete");
             }
         }
-        public int Id { get; private set; }
-        public string Title { get; set; }
 
-        public TaskModel(string title)
+        [DataMember]
+        public int? Id
         {
-            this.Complete = false;
-            this.Id = TaskModel.GetNewId();
-            this.Title = title;
+            get { return this.id; }
+            set
+            {
+                this.id = value;
+                base.RaisePropertyChangedEvent("Id");
+            }
+        }
+
+        [DataMember]
+        public string Title
+        {
+            get { return this.title; }
+            set
+            {
+                this.title = value;
+                base.RaisePropertyChangedEvent("Title");
+            }
         }
     }
 }
