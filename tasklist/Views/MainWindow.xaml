@@ -47,7 +47,15 @@
             </DataGridTemplateColumn.CellTemplate>
           </DataGridTemplateColumn>
           <DataGridTextColumn Header="Title"
-                              Binding="{Binding Title, UpdateSourceTrigger=PropertyChanged}" />
+                              Binding="{Binding Title, UpdateSourceTrigger=PropertyChanged}">
+            <DataGridTextColumn.CellStyle>
+              <Style BasedOn="{StaticResource {x:Type DataGridCell}}"
+                     TargetType="DataGridCell">
+                <EventSetter Event="PreviewMouseLeftButtonDown"
+                             Handler="OnPreviewMouseLeftButtonDown" />
+              </Style>
+            </DataGridTextColumn.CellStyle>
+          </DataGridTextColumn>
         </DataGrid.Columns>
       </DataGrid>
       <DataGrid AutoGenerateColumns="False"
@@ -74,7 +82,15 @@
             </DataGridTemplateColumn.CellTemplate>
           </DataGridTemplateColumn>
           <DataGridTextColumn Header="Title"
-                              Binding="{Binding Title, UpdateSourceTrigger=PropertyChanged}" />
+                              Binding="{Binding Title, UpdateSourceTrigger=PropertyChanged}">
+            <DataGridTextColumn.CellStyle>
+              <Style BasedOn="{StaticResource {x:Type DataGridCell}}"
+                     TargetType="DataGridCell">
+                <EventSetter Event="PreviewMouseLeftButtonDown"
+                             Handler="OnPreviewMouseLeftButtonDown" />
+              </Style>
+            </DataGridTextColumn.CellStyle>
+          </DataGridTextColumn>
         </DataGrid.Columns>
       </DataGrid>
     </Grid>
