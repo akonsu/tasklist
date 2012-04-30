@@ -26,12 +26,20 @@
       <DataGrid AutoGenerateColumns="False"
                 CanUserAddRows="False"
                 ItemsSource="{Binding IncompleteTasks.View}"
+                Name="IncompleteTasks"
                 SelectedItem="{Binding SelectedTask}"
                 SelectionMode="Single"
                 Grid.Column="0"
                 views:DataGridProperties.RowEditEndingCommand="{Binding UpdateTaskCommand}">
         <DataGrid.Columns>
           <DataGridTemplateColumn Header="Complete">
+            <DataGridTemplateColumn.CellStyle>
+              <Style BasedOn="{StaticResource {x:Type DataGridCell}}"
+                     TargetType="DataGridCell">
+                <Setter Property="IsTabStop"
+                        Value="False" />
+              </Style>
+            </DataGridTemplateColumn.CellStyle>
             <DataGridTemplateColumn.CellTemplate>
               <DataTemplate>
                 <CheckBox IsChecked="{Binding Path=Complete, UpdateSourceTrigger=PropertyChanged}" />
@@ -45,12 +53,20 @@
       <DataGrid AutoGenerateColumns="False"
                 CanUserAddRows="False"
                 ItemsSource="{Binding CompleteTasks.View}"
+                Name="CompleteTasks"
                 SelectedItem="{Binding SelectedTask}"
                 SelectionMode="Single"
                 Grid.Column="1"
                 views:DataGridProperties.RowEditEndingCommand="{Binding UpdateTaskCommand}">
         <DataGrid.Columns>
           <DataGridTemplateColumn Header="Complete">
+            <DataGridTemplateColumn.CellStyle>
+              <Style BasedOn="{StaticResource {x:Type DataGridCell}}"
+                     TargetType="DataGridCell">
+                <Setter Property="IsTabStop"
+                        Value="False" />
+              </Style>
+            </DataGridTemplateColumn.CellStyle>
             <DataGridTemplateColumn.CellTemplate>
               <DataTemplate>
                 <CheckBox IsChecked="{Binding Path=Complete, UpdateSourceTrigger=PropertyChanged}" />
