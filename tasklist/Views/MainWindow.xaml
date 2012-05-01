@@ -41,8 +41,24 @@
                VerticalAlignment="Center"
                Grid.Column="0" />
       <Button Command="{Binding CreateTaskCommand}"
+              Content="Create"
               IsDefault="True"
-              Grid.Column="1">Create</Button>
+              Grid.Column="1">
+        <Button.Style>
+          <Style TargetType="Button"
+                 BasedOn="{StaticResource RoundedLinkButton}">
+            <Setter Property="IsEnabled"
+                    Value="True" />
+            <Style.Triggers>
+              <DataTrigger Binding="{Binding Text, ElementName=TitleBox}"
+                           Value="">
+                <Setter Property="IsEnabled"
+                        Value="False" />
+              </DataTrigger>
+            </Style.Triggers>
+          </Style>
+        </Button.Style>
+      </Button>
     </Grid>
     <TextBlock Margin="0 10"
                DockPanel.Dock="Top">or edit existing tasks:</TextBlock>
