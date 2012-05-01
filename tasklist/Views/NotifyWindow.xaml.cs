@@ -5,8 +5,9 @@ using Forms = System.Windows.Forms;
 
 namespace TaskList.Views
 {
-    public partial class NotifyWindow : Window
+    public partial class NotifyWindow : Window, IDisposable
     {
+        private bool is_disposed = false;
         private readonly Forms.NotifyIcon notify_icon = new Forms.NotifyIcon();
 
         private void InitializeNotifyIcon()
@@ -30,6 +31,26 @@ namespace TaskList.Views
             };
         }
 
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!this.is_disposed)
+            {
+                if (disposing)
+                {
+                    this.notify_icon.Dispose();
+                }
+                this.is_disposed = true;
+            }
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            // Tell the garbage collector not to call the finalizer
+            // since all the cleanup will already be done.
+            GC.SuppressFinalize(true);
+        }
+
         public NotifyWindow()
         {
             this.InitializeComponent();
@@ -37,6 +58,11 @@ namespace TaskList.Views
 
             this.Left = SystemParameters.WorkArea.Width - this.Width - 10;
             this.Top = SystemParameters.WorkArea.Height - this.Height;
+        }
+
+        ~NotifyWindow()
+        {
+            this.Dispose(false);
         }
     }
 }
