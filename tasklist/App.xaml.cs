@@ -10,10 +10,12 @@ namespace TaskList
         {
             base.OnStartup(e);
 
-            var window = new MainWindow();
+            var main_window = new MainWindow();
+            var notify_window = new NotifyWindow();
 
-            window.DataContext = new MainViewModel();
-            window.Show();
+            main_window.DataContext = new MainViewModel();
+
+            main_window.Show();
         }
     }
 }

@@ -10,7 +10,7 @@ namespace TaskList.Models
 {
     internal class MainViewModel : ModelBase
     {
-        private TasksDataServiceClient client = new TasksDataServiceClient();
+        private readonly TasksDataServiceClient client = new TasksDataServiceClient();
 
         private void OnCreateTaskCommand(object parameter)
         {
