@@ -4,6 +4,7 @@
   <Application.Resources>
     <ResourceDictionary>
       <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/Views/Styles/Button.xaml" />
         <ResourceDictionary Source="/Views/Styles/CheckBox.xaml" />
         <ResourceDictionary Source="/Views/Styles/DataGrid.xaml" />
       </ResourceDictionary.MergedDictionaries>

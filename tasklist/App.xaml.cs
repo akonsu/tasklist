@@ -23,6 +23,8 @@ namespace TaskList
 
         private void OnViewTasksCommand(object parameter)
         {
+            this.notify_window.Hide();
+            this.main_window.Show();
             this.main_window.Activate();
         }
 

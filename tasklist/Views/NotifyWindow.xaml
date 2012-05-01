@@ -7,26 +7,21 @@
         ShowInTaskbar="False"
         Topmost="True"
         WindowStyle="None"
-        Height="200"
+        Height="40"
         Width="200">
-  <Border Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
-          BorderBrush="#000000"
+  <Border Background="#d4edc9"
+          BorderBrush="#419a56"
           BorderThickness="1"
-          CornerRadius="5"
+          CornerRadius="8"
+          Padding="10"
           SnapsToDevicePixels="True">
-    <Grid>
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="5*" />
-        <ColumnDefinition Width="5*" />
-      </Grid.ColumnDefinitions>
+    <StackPanel Orientation="Horizontal">
       <Button Command="{Binding ViewTasksCommand}"
-              Height="25"
-              Width="100"
-              Grid.Column="0">Restore</Button>
+              Style="{StaticResource LinkButton}"
+              Height="25">View</Button>
       <Button Command="{Binding CloseCommand}"
-              Height="25"
-              Width="100"
-              Grid.Column="1">Close</Button>
-    </Grid>
+              Style="{StaticResource LinkButton}"
+              Height="25">Close</Button>
+    </StackPanel>
   </Border>
 </Window>
