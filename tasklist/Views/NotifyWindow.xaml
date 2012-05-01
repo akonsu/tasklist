@@ -19,12 +19,14 @@
         <ColumnDefinition Width="5*" />
         <ColumnDefinition Width="5*" />
       </Grid.ColumnDefinitions>
-      <Button Grid.Column="0"
+      <Button Command="{Binding ViewTasksCommand}"
               Height="25"
-              Width="100">Restore</Button>
-      <Button Grid.Column="1"
+              Width="100"
+              Grid.Column="0">Restore</Button>
+      <Button Command="{Binding CloseCommand}"
               Height="25"
-              Width="100">Close</Button>
+              Width="100"
+              Grid.Column="1">Close</Button>
     </Grid>
   </Border>
 </Window>

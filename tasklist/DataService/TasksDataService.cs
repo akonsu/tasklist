@@ -6,7 +6,7 @@ using TaskList.Models;
 namespace TaskList.DataService
 {
     [ServiceContract]
-    internal interface ITasksDataService
+    public interface ITasksDataService
     {
         [OperationContract]
         IEnumerable<TaskModel> GetTasks();
@@ -24,7 +24,7 @@ namespace TaskList.DataService
     //
     // mock of data service client
     //
-    internal partial class TasksDataServiceClient : ITasksDataService
+    public class TasksDataServiceClient : ITasksDataService
     {
         private static int count = 0;
 

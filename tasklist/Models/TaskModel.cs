@@ -3,7 +3,7 @@
 namespace TaskList.Models
 {
     [DataContract]
-    internal class TaskModel : ModelBase
+    public class TaskModel : ModelBase
     {
         private bool complete;
         private int? id;

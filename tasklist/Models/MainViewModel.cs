@@ -8,7 +8,7 @@ using TaskList.DataService;
 
 namespace TaskList.Models
 {
-    internal class MainViewModel : ModelBase
+    public class MainViewModel : ModelBase
     {
         private readonly TasksDataServiceClient client = new TasksDataServiceClient();
 

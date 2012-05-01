@@ -63,6 +63,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\NotifyVewModel.cs" />
     <Compile Include="Views\DataGridProperties.cs" />
     <Compile Include="Commands\DelegateCommand.cs" />
     <Compile Include="DataService\TasksDataService.cs" />
