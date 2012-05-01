@@ -12,7 +12,7 @@ namespace TaskList
 
         private bool CanViewTasksExecute(object parameter)
         {
-            return !this.main_window.IsActive;
+            return !this.main_window.IsVisible;
         }
 
         private void OnCloseCommand(object parameter)

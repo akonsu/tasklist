@@ -8,6 +8,13 @@
       <Setter.Value>
         <ControlTemplate TargetType="{x:Type Button}">
           <TextBlock TextDecorations="Underline"><ContentPresenter /></TextBlock>
+          <ControlTemplate.Triggers>
+            <Trigger Property="IsEnabled"
+                     Value="False">
+              <Setter Property="Foreground"
+                      Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
+            </Trigger>
+          </ControlTemplate.Triggers>
         </ControlTemplate>
       </Setter.Value>
     </Setter>
