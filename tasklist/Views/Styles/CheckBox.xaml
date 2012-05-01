@@ -13,7 +13,7 @@
                          Fill="Transparent"
                          Width="10"
                          Height="10"
-                         Stroke="Black" />
+                         Stroke="#333" />
               <ContentPresenter Content="{TemplateBinding Content}"
                                 ContentTemplate="{TemplateBinding ContentTemplate}"
                                 Margin="{TemplateBinding Padding}" />
@@ -25,7 +25,7 @@
                       <Path Name="CheckMark"
                             Opacity="0"
                             Data="M 0 5 L 3 10 10 0"
-                            Stroke="#FF70A16F"
+                            Stroke="#419a56"
                             StrokeThickness="3"
                             StrokeStartLineCap="Round"
                             StrokeEndLineCap="Round"

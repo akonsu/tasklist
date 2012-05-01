@@ -15,9 +15,9 @@
       <Trigger Property="IsSelected"
                Value="True">
         <Setter Property="Background"
-                Value="#e0f0c0" />
+                Value="#d4edc9" />
         <Setter Property="Foreground"
-                Value="Black" />
+                Value="#333" />
       </Trigger>
     </Style.Triggers>
   </Style>

@@ -11,12 +11,35 @@
         <ColumnDefinition Width="*" />
         <ColumnDefinition Width="Auto" />
       </Grid.ColumnDefinitions>
+      <Grid.Resources>
+        <Style TargetType="{x:Type TextBox}"
+               BasedOn="{StaticResource {x:Type TextBox}}">
+          <Style.Triggers>
+            <Trigger Property="Grid.Column"
+                     Value="0">
+              <Setter Property="Margin"
+                      Value="5 0" />
+            </Trigger>
+          </Style.Triggers>
+        </Style>
+        <Style TargetType="{x:Type Button}"
+               BasedOn="{StaticResource RoundedLinkButton}">
+          <Style.Triggers>
+            <Trigger Property="Grid.Column"
+                     Value="1">
+              <Setter Property="Margin"
+                      Value="5 0" />
+            </Trigger>
+          </Style.Triggers>
+        </Style>
+      </Grid.Resources>
       <TextBox Name="TitleBox"
                Text="{Binding NewTitle, UpdateSourceTrigger=PropertyChanged}"
+               VerticalAlignment="Center"
                Grid.Column="0" />
       <Button Command="{Binding CreateTaskCommand}"
-              Grid.Column="1"
-              IsDefault="True">Create</Button>
+              IsDefault="True"
+              Grid.Column="1">Create</Button>
     </Grid>
     <Grid>
       <Grid.ColumnDefinitions>
